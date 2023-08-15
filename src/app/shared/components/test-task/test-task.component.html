@@ -1,0 +1,12 @@
+<mat-form-field appearance="outline">
+  <input matInput type="number" [formControl]="fc" />
+</mat-form-field>
+<div class="picture-container">
+  <ng-container *ngIf="pictureStream$ | async as picture">
+    <img [src]="picture" (load)="onPictureLoad($event)" />
+  </ng-container>
+  <ng-container *ngIf="originalResolution$ | async as originals">
+    <p>Original Width: {{ originals.naturalWidth }}px;</p>
+    <p>Original Height: {{ originals.naturalHeight }}px</p>
+  </ng-container>
+</div>
